@@ -4,10 +4,10 @@ import './App.css';
 // --- INITIAL DATA ---
 const INITIAL_FLEET = [
   // CARS
-  { id: 1, category: 'Car', name: "Audi A6 Matrix", price: 120, km: 12000, condition: "Excellent", type: "Diesel", drive: "AWD", seats: 5, plate: "KA-05-MQ-9999", image: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=800&auto=format&fit=crop", isBooked: false, bookingInfo: null },
-  { id: 2, category: 'Car', name: "Ford Mustang GT", price: 250, km: 5000, condition: "Good", type: "Petrol", drive: "RWD", seats: 4, plate: "KA-51-MD-7777", image: "https://images.unsplash.com/photo-1584345611124-28c2807f7c22?q=80&w=800&auto=format&fit=crop", isBooked: false, bookingInfo: null },
+  { id: 1, category: 'Car', name: "Audi A6 Matrix", price: 120, km: 12000, condition: "Excellent", type: "Diesel", drive: "AWD", seats: 5, plate: "KA-05-MQ-9999", image: "https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=800&auto=format&fit=crop", isBooked: false, bookingInfo: null },
+  { id: 2, category: 'Car', name: "Ford Mustang GT", price: 250, km: 5000, condition: "Good", type: "Petrol", drive: "RWD", seats: 4, plate: "KA-51-MD-7777", image: "https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=800&auto=format&fit=crop", isBooked: false, bookingInfo: null },
   // BIKES
-  { id: 3, category: 'Bike', name: "Royal Enfield Himalayan", price: 40, km: 8000, condition: "Rugged", type: "Petrol", drive: "Chain", seats: 2, plate: "KA-03-HA-4500", image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=800&auto=format&fit=crop", isBooked: false, bookingInfo: null },
+  { id: 3, category: 'Bike', name: "Royal Enfield Himalayan", price: 40, km: 8000, condition: "Rugged", type: "Petrol", drive: "Chain", seats: 2, plate: "KA-03-HA-4500", image: "https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?q=80&w=800&auto=format&fit=crop", isBooked: false, bookingInfo: null },
   { id: 4, category: 'Bike', name: "Kawasaki Ninja 300", price: 60, km: 2000, condition: "Mint", type: "Petrol", drive: "Chain", seats: 2, plate: "KA-01-NJ-3000", image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=800&auto=format&fit=crop", isBooked: false, bookingInfo: null },
   // TRUCKS
   { id: 5, category: 'Truck', name: "Tata Prima 5530", price: 300, km: 50000, condition: "Heavy Duty", type: "Diesel", drive: "6x4", seats: 2, plate: "KA-53-TR-9900", image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=800&auto=format&fit=crop", isBooked: false, bookingInfo: null }
@@ -18,7 +18,7 @@ function App() {
   const [role, setRole] = useState('user'); 
   
   // Data
-  const [fleet, setFleet] = useState(() => JSON.parse(localStorage.getItem('fleet_v2')) || INITIAL_FLEET);
+  const [fleet, setFleet] = useState(() => JSON.parse(localStorage.getItem('fleet_v3')) || INITIAL_FLEET);
   const [users, setUsers] = useState(() => JSON.parse(localStorage.getItem('users')) || []);
   const [rentalHistory, setRentalHistory] = useState(() => JSON.parse(localStorage.getItem('rentalHistory')) || []);
   
@@ -36,7 +36,7 @@ function App() {
   const [categoryFilter, setCategoryFilter] = useState('Car'); 
   const [adminCategory, setAdminCategory] = useState('Car');
 
-  useEffect(() => { localStorage.setItem('fleet_v2', JSON.stringify(fleet)); }, [fleet]);
+  useEffect(() => { localStorage.setItem('fleet_v3', JSON.stringify(fleet)); }, [fleet]);
   useEffect(() => { localStorage.setItem('users', JSON.stringify(users)); }, [users]);
   useEffect(() => { localStorage.setItem('rentalHistory', JSON.stringify(rentalHistory)); }, [rentalHistory]);
 
@@ -320,7 +320,7 @@ function App() {
                <label>Price Per Day ($)</label>
                <input type="number" placeholder="100" onChange={e => setNewVehicleData({...newVehicleData, price: e.target.value})} required />
                
-               <label>Image URL</label>
+               <label>Image URL (Paste "Copy Image Address")</label>
                <input type="text" placeholder="https://..." onChange={e => setNewVehicleData({...newVehicleData, image: e.target.value})} />
                
                <div style={{display:'flex', gap:'10px'}}>
@@ -418,10 +418,10 @@ function App() {
          <div className="auth-screen" style={{position:'absolute', top:0, left:0, width:'100%', zIndex:100}}>
            <div className="glass-panel">
              <h3>EDIT {editingVehicle.category.toUpperCase()}</h3>
-             <input value={editingVehicle.name} onChange={e => setEditingVehicle({...editingVehicle, name: e.target.value})} />
-             <input value={editingVehicle.plate} onChange={e => setEditingVehicle({...editingVehicle, plate: e.target.value})} />
-             <input value={editingVehicle.price} type="number" onChange={e => setEditingVehicle({...editingVehicle, price: e.target.value})} />
-             <input value={editingVehicle.image} onChange={e => setEditingVehicle({...editingVehicle, image: e.target.value})} />
+             <input value={editingVehicle.name} placeholder="Name" onChange={e => setEditingVehicle({...editingVehicle, name: e.target.value})} />
+             <input value={editingVehicle.plate} placeholder="Plate" onChange={e => setEditingVehicle({...editingVehicle, plate: e.target.value})} />
+             <input value={editingVehicle.price} type="number" placeholder="Price" onChange={e => setEditingVehicle({...editingVehicle, price: e.target.value})} />
+             <input value={editingVehicle.image} placeholder="Paste Image Address here" onChange={e => setEditingVehicle({...editingVehicle, image: e.target.value})} />
              <button className="action-btn" onClick={saveEditedVehicle}>SAVE</button>
              <button className="back-btn" onClick={() => setEditingVehicle(null)}>CANCEL</button>
            </div>
