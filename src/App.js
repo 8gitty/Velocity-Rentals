@@ -4,13 +4,13 @@ import './App.css';
 // --- INITIAL DATA ---
 const INITIAL_FLEET = [
   // CARS
-  { id: 1, category: 'Car', name: "Audi A6 Matrix", price: 120, km: 12000, condition: "Excellent", type: "Diesel", drive: "AWD", seats: 5, plate: "KA-05-MQ-9999", image: "https://upload.wikimedia.org/wikipedia/commons/2/29/2014_Audi_A6_Avant_TDi_Ultra_S_Line_2.0_Front.jpg", isBooked: false, bookingInfo: null },
-  { id: 2, category: 'Car', name: "Ford Mustang GT", price: 250, km: 5000, condition: "Good", type: "Petrol", drive: "RWD", seats: 4, plate: "KA-51-MD-7777", image: "https://upload.wikimedia.org/wikipedia/commons/5/55/2016_Ford_Mustang_GT_5.0.jpg", isBooked: false, bookingInfo: null },
+  { id: 1, category: 'Car', name: "Audi A6 Matrix", price: 120, km: 12000, condition: "Excellent", type: "Diesel", drive: "AWD", seats: 5, plate: "KA-05-MQ-9999", image: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=800&auto=format&fit=crop", isBooked: false, bookingInfo: null },
+  { id: 2, category: 'Car', name: "Ford Mustang GT", price: 250, km: 5000, condition: "Good", type: "Petrol", drive: "RWD", seats: 4, plate: "KA-51-MD-7777", image: "https://images.unsplash.com/photo-1584345611124-28c2807f7c22?q=80&w=800&auto=format&fit=crop", isBooked: false, bookingInfo: null },
   // BIKES
-  { id: 3, category: 'Bike', name: "Royal Enfield Himalayan", price: 40, km: 8000, condition: "Rugged", type: "Petrol", drive: "Chain", seats: 2, plate: "KA-03-HA-4500", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Royal_Enfield_Himalayan_%282019%29_-_Front.jpg/1280px-Royal_Enfield_Himalayan_%282019%29_-_Front.jpg", isBooked: false, bookingInfo: null },
-  { id: 4, category: 'Bike', name: "Kawasaki Ninja 300", price: 60, km: 2000, condition: "Mint", type: "Petrol", drive: "Chain", seats: 2, plate: "KA-01-NJ-3000", image: "https://upload.wikimedia.org/wikipedia/commons/9/99/Kawasaki_Ninja_300_Special_Edition_2013.jpg", isBooked: false, bookingInfo: null },
+  { id: 3, category: 'Bike', name: "Royal Enfield Himalayan", price: 40, km: 8000, condition: "Rugged", type: "Petrol", drive: "Chain", seats: 2, plate: "KA-03-HA-4500", image: "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=800&auto=format&fit=crop", isBooked: false, bookingInfo: null },
+  { id: 4, category: 'Bike', name: "Kawasaki Ninja 300", price: 60, km: 2000, condition: "Mint", type: "Petrol", drive: "Chain", seats: 2, plate: "KA-01-NJ-3000", image: "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=800&auto=format&fit=crop", isBooked: false, bookingInfo: null },
   // TRUCKS
-  { id: 5, category: 'Truck', name: "Tata Prima 5530", price: 300, km: 50000, condition: "Heavy Duty", type: "Diesel", drive: "6x4", seats: 2, plate: "KA-53-TR-9900", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Tata_Prima_Race_Truck_Front.jpg/1280px-Tata_Prima_Race_Truck_Front.jpg", isBooked: false, bookingInfo: null }
+  { id: 5, category: 'Truck', name: "Tata Prima 5530", price: 300, km: 50000, condition: "Heavy Duty", type: "Diesel", drive: "6x4", seats: 2, plate: "KA-53-TR-9900", image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=800&auto=format&fit=crop", isBooked: false, bookingInfo: null }
 ];
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
   const [role, setRole] = useState('user'); 
   
   // Data
-  const [fleet, setFleet] = useState(() => JSON.parse(localStorage.getItem('fleet')) || INITIAL_FLEET);
+  const [fleet, setFleet] = useState(() => JSON.parse(localStorage.getItem('fleet_v2')) || INITIAL_FLEET);
   const [users, setUsers] = useState(() => JSON.parse(localStorage.getItem('users')) || []);
   const [rentalHistory, setRentalHistory] = useState(() => JSON.parse(localStorage.getItem('rentalHistory')) || []);
   
@@ -36,7 +36,7 @@ function App() {
   const [categoryFilter, setCategoryFilter] = useState('Car'); 
   const [adminCategory, setAdminCategory] = useState('Car');
 
-  useEffect(() => { localStorage.setItem('fleet', JSON.stringify(fleet)); }, [fleet]);
+  useEffect(() => { localStorage.setItem('fleet_v2', JSON.stringify(fleet)); }, [fleet]);
   useEffect(() => { localStorage.setItem('users', JSON.stringify(users)); }, [users]);
   useEffect(() => { localStorage.setItem('rentalHistory', JSON.stringify(rentalHistory)); }, [rentalHistory]);
 
