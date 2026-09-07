@@ -1,5 +1,4 @@
 <div align="center">
-  <img src="https://img.icons8.com/clouds/256/000000/car-rental.png" alt="Velocity Rentals Logo" width="150" />
 
   # 🏎️💨 <span style="color: #ff4500;">Velocity Rentals</span>
 
