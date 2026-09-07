@@ -1,0 +1,6 @@
+@echo off
+echo STARTING VELOCITY RENTALS...
+echo PLEASE WAIT, OPENING DASHBOARD...
+cd /d "%~dp0"
+start "" http://localhost:3000
+npm start
