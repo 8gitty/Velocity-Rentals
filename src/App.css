@@ -55,15 +55,15 @@ body {
 .tab-btn.active { background: var(--neon); color: #000; border-color: var(--neon); box-shadow: 0 0 15px var(--neon); }
 
 .scroll-wrapper { height: calc(100vh - 150px); overflow-y: auto; width: 100%; padding-bottom: 50px; z-index: 2; }
-.grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; width: 90%; margin: 0 auto; }
+.grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; width: 90%; margin: 0 auto; }
 
 .vehicle-card {
   background: rgba(20,20,20,0.6); backdrop-filter: blur(5px);
-  border: 1px solid var(--border); height: 320px;
+  border: 1px solid var(--border); border-radius: 10px;
   position: relative; overflow: hidden; transition: 0.4s; cursor: pointer;
 }
 .vehicle-card:hover { transform: scale(1.02); border-color: var(--neon); background: rgba(30,30,30,0.8); }
-.vehicle-card img { width: 100%; height: 65%; object-fit: cover; opacity: 0.9; }
+.vehicle-card img { width: 100%; height: 220px; object-fit: cover; opacity: 0.9; display: block; border-bottom: 1px solid var(--border); }
 .card-info { padding: 15px; position: relative; }
 
 .cinematic-title {
@@ -105,8 +105,8 @@ button:hover { background: var(--neon); color: #000; box-shadow: 0 0 20px var(--
   display: flex; flex-direction: column; position: relative; box-shadow: 0 50px 100px rgba(0,0,0,0.8); z-index: 3;
 }
 .detail-split-container { display: flex; height: 100%; }
-.detail-left { flex: 1.2; background: #000; position: relative; overflow: hidden; }
-.hero-image { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.8; }
+.detail-left { flex: 1.2; background: #000; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.hero-image { width: 100%; height: 100%; object-fit: contain; object-position: center; opacity: 0.9; }
 .price-tag-large { position: absolute; bottom: 30px; left: 30px; font-size: 3rem; font-weight: bold; color: var(--neon); text-shadow: 0 0 20px rgba(0,255,204,0.5); }
 .price-tag-large span { font-size: 1rem; color: #fff; letter-spacing: 2px; }
 .detail-right { flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; }

@@ -14,16 +14,20 @@ const INITIAL_FLEET = [
 ];
 
 function App() {
-  const [view, setView] = useState('landing'); 
-  const [role, setRole] = useState('user'); 
+  const initialUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+  const initialRole = localStorage.getItem('role') || 'user';
+  const initialView = initialUser ? (initialRole === 'admin' ? 'admin-dash' : 'user-dash') : 'landing';
+
+  const [view, setView] = useState(initialView); 
+  const [role, setRole] = useState(initialRole); 
   
   // Data
-  const [fleet, setFleet] = useState(() => JSON.parse(localStorage.getItem('fleet_v3')) || INITIAL_FLEET);
+  const [fleet, setFleet] = useState(() => JSON.parse(localStorage.getItem('fleet_v4')) || INITIAL_FLEET);
   const [users, setUsers] = useState(() => JSON.parse(localStorage.getItem('users')) || []);
   const [rentalHistory, setRentalHistory] = useState(() => JSON.parse(localStorage.getItem('rentalHistory')) || []);
   
   // State
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(initialUser);
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [editingVehicle, setEditingVehicle] = useState(null);
   
@@ -36,9 +40,11 @@ function App() {
   const [categoryFilter, setCategoryFilter] = useState('Car'); 
   const [adminCategory, setAdminCategory] = useState('Car');
 
-  useEffect(() => { localStorage.setItem('fleet_v3', JSON.stringify(fleet)); }, [fleet]);
+  useEffect(() => { localStorage.setItem('fleet_v4', JSON.stringify(fleet)); }, [fleet]);
   useEffect(() => { localStorage.setItem('users', JSON.stringify(users)); }, [users]);
   useEffect(() => { localStorage.setItem('rentalHistory', JSON.stringify(rentalHistory)); }, [rentalHistory]);
+  useEffect(() => { localStorage.setItem('currentUser', JSON.stringify(currentUser)); }, [currentUser]);
+  useEffect(() => { localStorage.setItem('role', role); }, [role]);
 
   // --- LOGIC ---
   const calculateFine = (booking) => {
@@ -210,7 +216,7 @@ function App() {
   if (view === 'user-dash') return (
     <div className="dashboard">
       <div className="bg-overlay"></div>
-      <div className="nav-bar"><span>HELLO, {currentUser?.name}</span> <button onClick={() => setView('landing')}>LOGOUT</button></div>
+      <div className="nav-bar"><span>HELLO, {currentUser?.name}</span> <button onClick={() => { setCurrentUser(null); setView('landing'); }}>LOGOUT</button></div>
       
       {/* CATEGORY TABS (REMOVED 'ALL') */}
       <div className="tabs-container">
@@ -232,7 +238,10 @@ function App() {
                 <img src={v.image} alt="" />
                 <div className="card-info">
                   <h3>{v.name}</h3>
-                  <p>{v.category} | {v.type}</p>
+                  <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:'5px'}}>
+                    <p style={{margin:0, color:'#aaa'}}>{v.category} | {v.type}</p>
+                    <strong style={{color:'var(--neon)', fontSize:'1.1rem'}}>${v.price}/day</strong>
+                  </div>
                   <span className={`badge ${status}`}>{status === 'mine' ? 'YOURS' : status === 'others' ? 'RENTED' : 'OPEN'}</span>
                 </div>
               </div>
@@ -356,7 +365,7 @@ function App() {
   if (view === 'admin-dash') return (
     <div className="admin-dashboard">
        <div className="bg-overlay"></div>
-       <div className="nav-bar"><span>ADMIN</span> <button onClick={() => setView('landing')}>LOGOUT</button></div>
+       <div className="nav-bar"><span>ADMIN</span> <button onClick={() => { setCurrentUser(null); setView('landing'); }}>LOGOUT</button></div>
        
        <div className="tabs-container admin-tabs">
           {['Car', 'Bike', 'Truck'].map(cat => (
