@@ -5,9 +5,9 @@
 
   *Experience the thrill of the drive with the ultimate car rental platform.*
 
-  [![MVP Live Demo](https://img.shields.io/badge/🚀_Live_MVP-Click_Here!-ff69b4?style=for-the-badge&logo=github)](https://8gitty.github.io/Velocity-Rentals)
+  [![MVP Live Demo](https://img.shields.io/badge/🚀_Live_MVP-Click_Here!-grey?style=for-the-badge&logo=github)](https://8gitty.github.io/Velocity-Rentals)
   
-  [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=grey)](https://reactjs.org/)
+  [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
   [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub%20Pages&logoColor=white)](https://pages.github.com/)
 </div>
 
