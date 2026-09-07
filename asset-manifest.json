@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Velocity-Rentals/static/css/main.86ef640c.css",
+    "main.js": "/Velocity-Rentals/static/js/main.e989b6ab.js",
+    "static/js/453.99c07213.chunk.js": "/Velocity-Rentals/static/js/453.99c07213.chunk.js",
+    "index.html": "/Velocity-Rentals/index.html",
+    "main.86ef640c.css.map": "/Velocity-Rentals/static/css/main.86ef640c.css.map",
+    "main.e989b6ab.js.map": "/Velocity-Rentals/static/js/main.e989b6ab.js.map",
+    "453.99c07213.chunk.js.map": "/Velocity-Rentals/static/js/453.99c07213.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.86ef640c.css",
+    "static/js/main.e989b6ab.js"
+  ]
+}
